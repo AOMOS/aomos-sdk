@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package aomos.v1;
+
+message Game {
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    STATE_READY = 1;
+    STATE_RUNNING = 2;
+    STATE_STOPPING = 3;
+  }
+  State state = 1;
+}
+
+message GetGameRequest {}
+message GetGameResponse {
+  Game game = 1;
+}
+
+message StartGameRequest {}
+message StartGameResponse {}
+
+message StopGameRequest {}
+message StopGameResponse {}
+
+service GameService {
+  rpc GetGame(GetGameRequest) returns (GetGameResponse);
+  rpc StartGame(StartGameRequest) returns (StartGameResponse);
+  rpc StopGame(StopGameRequest) returns (StopGameResponse);
+}
