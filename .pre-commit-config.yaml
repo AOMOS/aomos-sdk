@@ -28,3 +28,21 @@ repos:
     rev: v2.4.0
     hooks:
       - id: prettier
+  - repo: https://github.com/doublify/pre-commit-rust
+    rev: v1.0
+    hooks:
+      - id: cargo-check
+        args: [--manifest-path, packages/rust/Cargo.toml]
+      - id: clippy
+        args:
+          [
+            --manifest-path,
+            packages/rust/Cargo.toml,
+            --all-features,
+            --all-targets,
+            --,
+            -D,
+            warnings,
+          ]
+      - id: fmt
+        args: [--manifest-path, packages/rust/Cargo.toml, --all, --]
