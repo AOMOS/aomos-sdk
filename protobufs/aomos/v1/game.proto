@@ -12,6 +12,10 @@ message Game {
   State state = 1;
 }
 
+message GameReady {}
+message GameStarted {}
+message GameStopped {}
+
 message GetGameRequest {}
 message GetGameResponse {
   Game game = 1;
@@ -23,8 +27,18 @@ message StartGameResponse {}
 message StopGameRequest {}
 message StopGameResponse {}
 
+message SubscribeEventsRequest {}
+message SubscribeEventsResponse {
+  oneof event {
+    GameReady game_ready = 1;
+    GameStarted game_started = 2;
+    GameStopped game_stopped = 3;
+  }
+}
+
 service GameService {
   rpc GetGame(GetGameRequest) returns (GetGameResponse);
   rpc StartGame(StartGameRequest) returns (StartGameResponse);
   rpc StopGame(StopGameRequest) returns (StopGameResponse);
+  rpc SubscribeEvents(SubscribeEventsRequest) returns (stream SubscribeEventsResponse);
 }
