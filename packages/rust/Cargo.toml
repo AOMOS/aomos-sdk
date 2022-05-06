@@ -27,7 +27,7 @@ publish = false
 server = []
 
 [dependencies]
-prost = "0.8.0"
+prost = "0.10.3"
 tonic = "0.5.2"
 
 [build-dependencies]
