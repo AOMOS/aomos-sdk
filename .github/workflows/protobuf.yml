@@ -16,6 +16,6 @@ jobs:
         uses: bufbuild/buf-setup-action@v1.7.0
 
       - name: Run Buf
-        uses: bufbuild/buf-lint-action@v1.0.1
+        uses: bufbuild/buf-lint-action@v1.0.3
         with:
           input: protobufs
